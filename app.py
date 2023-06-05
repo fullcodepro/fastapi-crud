@@ -1,13 +1,14 @@
-from fastapi import FastAPI, HTTPException # Para crear la API y manejar excepciones
-from pydantic import BaseModel # Para definir los modelos
-from typing import Text, Optional # Tipos de datos
-from datetime import datetime # Para manejar fechas
-from uuid import uuid4 as uuid # Para generar ids
-
+# Para crear la API y manejar excepciones
+from fastapi import FastAPI, HTTPException
+from pydantic import BaseModel  # Para definir los modelos
+from typing import Text, Optional  # Tipos de datos
+from datetime import datetime  # Para manejar fechas
+from uuid import uuid4 as uuid  # Para generar ids
+from falcon7b import factory
 # Item model
 
 
-class Post(BaseModel): # Hereda de BaseModel
+class Post(BaseModel):  # Hereda de BaseModel
     id: Optional[str]
     title: str
     author: str
@@ -17,8 +18,8 @@ class Post(BaseModel): # Hereda de BaseModel
     published_at: Optional[datetime]
     published: Optional[bool] = False
 
-
-arrPosts = [ # Array de posts
+# Array de posts
+arrPosts = [  
     {
         "id": "3eced11e-690e-4a35-93cd-b52b708d3ec7",
         "title": "Mi primer post",
@@ -61,15 +62,10 @@ arrPosts = [ # Array de posts
     },]
 
 # Create FastAPI instance
-app = FastAPI() 
+app = FastAPI()
 
-
-@app.get("/posts/")
-def read_posts():
-    return arrPosts
-
-
-@app.get("/posts/{id}") # Path parameter
+# Ejemplo de cómo recibir parámetros
+@app.get("/posts/{id}")
 def read_post(id: str):
     for post in arrPosts:
         if post['id'] == id:
@@ -77,7 +73,7 @@ def read_post(id: str):
     raise HTTPException(status_code=404, detail="Post not found")
 
 
-@app.post("/posts/", response_model=Post, status_code=201) # Status code
+@app.post("/posts/", response_model=Post, status_code=201)  # Status code
 async def create_post(post: Post):
     post.id = str(uuid())
     arrPosts.append(post.dict())
@@ -100,6 +96,19 @@ async def update_post(id: str, post: Post):
             arrPosts[i] = post.dict()
             return [{'message': 'Post updated', 'data': arrPosts}]
     raise HTTPException(status_code=404, detail="Post not found")
+
+
+# ======================================================
+#            ENDPOINTS PARA EJECUTAR EL MODELO
+# ======================================================
+
+@app.get("/falcon/", response_model=str, status_code=200)
+async def model_response(question: str):
+    print(question)
+    respuesta = await factory(question=question)
+    return respuesta
+
+
 
 # @app.get("/posts/{item_id}")
 # def read_item(item_id: int, q: str = None):
