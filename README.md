@@ -17,7 +17,13 @@ Inicializar servidor con:
 uvicorn app:app --reload
 ```
 
-Endopoint
+>> #### Configurar la variable en el archivo falcon7b.py
+
+```bash
+huggingfacehub_api_token = "Your HuggingFace Api Token"
+``` 
+
+Endpoint de ejemplo (GET):
 ```bash
 http://localhost:8000/falcon?question=quien+fue+maradona
 ```
