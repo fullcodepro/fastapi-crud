@@ -29,7 +29,7 @@ const mostrarRespuesta = (respuesta) => {
       respuestaContainer.textContent = textoParcial;
       index++;
       // Ajusta el tiempo entre cada letra (en milisegundos) para controlar la velocidad de la respuesta
-      const tiempoEntreLetras = 25; // Puedes ajustar este valor según tus necesidades
+      const tiempoEntreLetras = 14; // Puedes ajustar este valor según tus necesidades
       setTimeout(mostrarSiguienteLetra, tiempoEntreLetras);
     }
   };

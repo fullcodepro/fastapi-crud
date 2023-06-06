@@ -3,7 +3,7 @@
 from langchain import HuggingFaceHub, PromptTemplate, LLMChain
 import os
 # huggingfacehub_api_token = os.environ['HUGGINGFACEHUB_API_TOKEN']
-huggingfacehub_api_token = "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"
+huggingfacehub_api_token = "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"
 
 
 repo_id = "tiiuae/falcon-7b-instruct"
