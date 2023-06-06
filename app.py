@@ -6,6 +6,7 @@ from datetime import datetime  # Para manejar fechas
 from uuid import uuid4 as uuid  # Para generar ids
 from falcon7b import factory
 from fastapi.staticfiles import StaticFiles
+
 # Cors
 from fastapi.middleware.cors import CORSMiddleware
 

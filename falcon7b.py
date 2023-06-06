@@ -2,8 +2,11 @@
 
 from langchain import HuggingFaceHub, PromptTemplate, LLMChain
 import os
-# huggingfacehub_api_token = os.environ['HUGGINGFACEHUB_API_TOKEN']
-huggingfacehub_api_token = "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"
+from dotenv import load_dotenv
+# Cargar las variables de entorno desde el archivo .env
+load_dotenv() 
+
+huggingfacehub_api_token = os.environ['HUGGINGFACEHUB_API_TOKEN']
 
 
 repo_id = "tiiuae/falcon-7b-instruct"
