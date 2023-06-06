@@ -78,11 +78,12 @@ button:hover {
 
 /* Estilo para respuestas del sistema */
 .respuesta {
-    background-color: #0a499a;
+    background-color: #61a0fd;
     color: #fff;
 }
 
-.pregunta, .respuesta {
+.pregunta,
+.respuesta {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
@@ -92,8 +93,18 @@ button:hover {
     overflow-y: scroll;
 }
 
-ul.lista-conversaciones > li {
+ul.lista-conversaciones>li {
     margin-bottom: 10px;
     padding: 10px;
     border-radius: 5px;
 }
+
+.respuesta-container {
+    display: inline-block;
+}
+
+/* Se alterna el color para los items impares */
+/* ul.lista-conversaciones > li:nth-child(odd) {
+    background-color: #dedcdc;
+    color: #333;
+} */
