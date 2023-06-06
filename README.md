@@ -17,11 +17,11 @@ Inicializar servidor con:
 uvicorn app:app --reload
 ```
 
->> #### Configurar la variable en el archivo falcon7b.py
+Crear archivo .env y configurar variable de entorno.
 
 ```bash
-huggingfacehub_api_token = "Your HuggingFace Api Token"
-``` 
+HUGGINGFACEHUB_API_TOKEN="YOUR_HUGGINGFACE_API_TOKEN"
+```
 
 Endpoint de ejemplo (GET):
 ```bash
