@@ -5,9 +5,33 @@ from typing import Text, Optional  # Tipos de datos
 from datetime import datetime  # Para manejar fechas
 from uuid import uuid4 as uuid  # Para generar ids
 from falcon7b import factory
+from fastapi.staticfiles import StaticFiles
+# Cors
+from fastapi.middleware.cors import CORSMiddleware
+
+# Create FastAPI instance
+app = FastAPI()
+
+origins = [
+    "*",
+    "http://localhost",
+    "http://localhost:8080",
+    "http://localhost:8000"
+]
+
+# Cors
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=origins,
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
+
+# Archivos estáticos
+app.mount("/static", StaticFiles(directory="static"), name="static")
+
 # Item model
-
-
 class Post(BaseModel):  # Hereda de BaseModel
     id: Optional[str]
     title: str
@@ -18,8 +42,9 @@ class Post(BaseModel):  # Hereda de BaseModel
     published_at: Optional[datetime]
     published: Optional[bool] = False
 
+
 # Array de posts
-arrPosts = [  
+arrPosts = [
     {
         "id": "3eced11e-690e-4a35-93cd-b52b708d3ec7",
         "title": "Mi primer post",
@@ -61,8 +86,6 @@ arrPosts = [
         "published": False
     },]
 
-# Create FastAPI instance
-app = FastAPI()
 
 # Ejemplo de cómo recibir parámetros
 @app.get("/posts/{id}")
@@ -107,7 +130,6 @@ async def model_response(question: str):
     print(question)
     respuesta = await factory(question=question)
     return respuesta
-
 
 
 # @app.get("/posts/{item_id}")
