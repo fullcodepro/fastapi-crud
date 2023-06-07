@@ -12,15 +12,15 @@ Instalación de dependencias en Windows
 pip install -r requirements.txt
 ```
 
-Inicializar servidor con:
-```bash
-uvicorn app:app --reload
-```
-
 Crear archivo .env y configurar variable de entorno.
 
 ```bash
 HUGGINGFACEHUB_API_TOKEN="YOUR_HUGGINGFACE_API_TOKEN"
+```
+
+Inicializar servidor con:
+```bash
+uvicorn app:app --reload
 ```
 
 Endpoint de ejemplo (GET):
