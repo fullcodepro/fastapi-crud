@@ -16,6 +16,8 @@ Crear archivo .env y configurar variable de entorno.
 
 ```bash
 HUGGINGFACEHUB_API_TOKEN="YOUR_HUGGINGFACE_API_TOKEN"
+
+REPO_ID="YOUR_REPO_MODEL_ID"
 ```
 
 Inicializar servidor con:
