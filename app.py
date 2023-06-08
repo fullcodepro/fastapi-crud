@@ -4,7 +4,7 @@ from pydantic import BaseModel  # Para definir los modelos
 from typing import Text, Optional  # Tipos de datos
 from datetime import datetime  # Para manejar fechas
 from uuid import uuid4 as uuid  # Para generar ids
-from falcon7b import factory
+from config_model import factory # Se importa la función para ejecutar el modelo
 from fastapi.staticfiles import StaticFiles
 
 # Cors

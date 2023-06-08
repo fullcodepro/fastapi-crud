@@ -7,9 +7,7 @@ from dotenv import load_dotenv
 load_dotenv() 
 
 huggingfacehub_api_token = os.environ['HUGGINGFACEHUB_API_TOKEN']
-
-
-repo_id = "tiiuae/falcon-40b-instruct"
+repo_id = os.environ['REPO_ID']
 llm = HuggingFaceHub(huggingfacehub_api_token=huggingfacehub_api_token,
                      repo_id=repo_id,
                      model_kwargs={"temperature": 0.6, "max_new_tokens": 1024 })
